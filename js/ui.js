@@ -95,9 +95,9 @@ define(['jquery', 'underscore'], function ($, _) {
         return currentLang;
     };
     var setLang = function (lang) {
-        lang = lang || localStorage["uilang"] || navigator.language || navigator.browserLanguage;
+        lang = lang || localStorage["uilang"] || 'ko-KR';
         if (_.any(supportedLang, function (o) { return o.key == lang }) == false) {
-            lang = 'zh-CN';
+            lang = 'ko-KR';
         }
         currentLang = lang;
         localStorage["uilang"] = lang;
