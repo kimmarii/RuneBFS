@@ -12,7 +12,9 @@ define(['jquery', 'ui'], function ($, Ui) {
         }
         var key = type;
         var self = this;
+        var lang = Ui.getLang();
         return self.isDataTooOld().then(function (force) {
+            force = true;
             var json = localStorage.getItem(key);
             if (json && !force) {
                 var jsondata = JSON.parse(json);
@@ -22,7 +24,8 @@ define(['jquery', 'ui'], function ($, Ui) {
                 return dtd.promise();
             }
             else {
-                var url = 'data/' + key + '.json'
+                var url = 'data/' + lang + '/' + key + '.json'
+              console.log(url);
                 return $.ajax({
                     url: url,
                     cache: false,
